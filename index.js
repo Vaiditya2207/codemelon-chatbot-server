@@ -1,10 +1,7 @@
 const express = require('express');
-const {createUser, getUserByEmail, updateUser} = require('./components/db');
-const { get } = require('mongoose');
-const bcrypt = require('bcrypt');
-const { createToken, verifyToken } = require('./components/jwt');
-const { hashPassword, checkPassword } = require('./components/passwordHash');
 const cookieParser = require('cookie-parser');
+const {signUp} = require('./functions/signUp');
+const {checkCredentials} = require('./functions/signIn');
 
 const app = express();
 app.use(express.json());
@@ -13,7 +10,19 @@ app.use(express.static('public'));
 const port = 2612;
 
 app.post('/signup', async (req, res) => {
+    const userData = req.body.info;
+    const password = req.body.password;
+    const response = await signUp(userData, password);
+    res.json(response);
+})
 
+app.post('/signin', async (req, res) => {
+    if(req.body.credentials){
+        const response = await checkCredentials(req.body.credentials);
+        res.json(response);
+    }else{
+        res.json({status: "failed", message: "Data error"});
+    }
 })
 
 app.listen(port, () => {    

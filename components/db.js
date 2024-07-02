@@ -3,98 +3,139 @@ const { v4: uuidv4 } = require("uuid");
 
 const mongoURI = "mongodb://localhost:27017/codemelon";
 
+// Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("   * Connected to Codemelon database! * "))
   .catch(err => console.error("Connection error", err));
 
+// Handle connection errors
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+/**
+ * Check the current state of the MongoDB connection.
+ * @returns {Object} - The connection status and a corresponding message.
+ */
 function checkDbConnection() {
     const state = mongoose.connection.readyState;
     switch (state) {
       case 0:
-        return ({status: "failed", message: "Database connection failed."})
+        return {status: "failed", message: "Database connection failed."};
       case 1:
-        return ({status: "success", message: "Database connection successful."})
+        return {status: "success", message: "Database connection successful."};
       case 2:
-        return ({status: "failed", message: "Database is connecting."})
+        return {status: "failed", message: "Database is connecting."};
       case 3:
-        return ({status: "failed", message: "Database connection is disconnecting."})
+        return {status: "failed", message: "Database connection is disconnecting."};
       default:
-        return ({status: "failed", message: "Unknown database connection state."})
+        return {status: "failed", message: "Unknown database connection state."};
     }
-  }
+}
 
-async function createUser(user) {
-  if (checkDbConnection().status === "failed") {
-    return ({status: "server-error", message: checkDbConnection().message});
+/**
+ * Create a new user in the database.
+ * @param {Object} user - The user object containing user details.
+ * @param {String} password - The hashed password of the user.
+ * @returns {Object} - The status of the user creation process and a message.
+ */
+async function createUser(user, password) {
+  const dbStatus = checkDbConnection();
+  if (dbStatus.status === "failed") {
+    return {status: "server-error", message: dbStatus.message};
   }
-  user.uid = uuidv4();
+  
+  user.uid = uuidv4(); // Assign a unique identifier to the user.
   try {
     const existingUsers = await db.collection("codemelonUsers").find({ email: user.email }).toArray();
     
     if (existingUsers.length > 0) {
-      return r({status: "client-error", message: "User with this email already exists"});
+      return {status: "client-error", message: "User with this email already exists"};
     }
     
+    // Insert user details and credentials into the database.
     await db.collection("codemelonUsers").insertOne(user);
-    return ({status: "success", message: "User inserted successfully", uid: user.uid});
+    await db.collection("codemelonCredentials").insertOne({ uid: user.uid, username: user.username, email: user.email, password });
+    return {status: "success", message: "User inserted successfully", uid: user.uid};
   } catch (err) {
-    return ({status: "server-error", message: err.message})
+    return {status: "server-error", message: err.message};
   }
 }
 
-async function getUserByEmail(email){
-    if (checkDbConnection().status === "failed") {
-        return ({status: "server-error", message: checkDbConnection().message});
+/**
+ * Retrieve a user by email from the specified database collection.
+ * @param {String} email - The email of the user to retrieve.
+ * @param {String} database - The name of the database collection.
+ * @returns {Object} - The status of the retrieval process and the user data or an error message.
+ */
+async function getUserByEmail(email, database) {
+    const dbStatus = checkDbConnection();
+    if (dbStatus.status === "failed") {
+        return {status: "server-error", message: dbStatus.message};
     }
-    try{
-        const user = await db.collection("codemelonUsers").findOne({email: email});
-        if (user == null){
-            return ({status: "not-found", message: "User not found"})
-        }else{
-            return ({status: "found", uid: user.uid});
+    try {
+        const user = await db.collection(database).findOne({ email });
+        if (!user) {
+            return {status: "not-found", message: "User not found"};
         }
-    }catch (err) {
-        return ({status: "server-error", message: err.message});
+        return {status: "found", user};
+    } catch (err) {
+        return {status: "server-error", message: err.message};
     }
 }
 
-async function getUserByUid(uid){
-    if (checkDbConnection().status === "failed") {
-        return ({status: "server-error", message: checkDbConnection().message});
+/**
+ * Retrieve a user by UID from the specified database collection.
+ * @param {String} uid - The UID of the user to retrieve.
+ * @param {String} database - The name of the database collection.
+ * @returns {Object} - The status of the retrieval process and the user data or an error message.
+ */
+async function getUserByUid(uid, database) {
+    const dbStatus = checkDbConnection();
+    if (dbStatus.status === "failed") {
+        return {status: "server-error", message: dbStatus.message};
     }
-    try{
-        const user = await db.collection("codemelonUsers").findOne({uid: uid});
-        if (user == null){
-            return ({status: "not-found", message: "User not found"})
-        }else{
-            return ({status: "found", email: user.email});
+    try {
+        const user = await db.collection(database).findOne({ uid });
+        if (!user) {
+            return {status: "not-found", message: "User not found"};
         }
-    }catch (err) {
-        return ({status: "server-error", message: err.message});
+        return {status: "found", user};
+    } catch (err) {
+        return {status: "server-error", message: err.message};
     }
 }
 
-async function getUserByName(username){
-    if (checkDbConnection().status === "failed") {
-        return ({status: "server-error", message: checkDbConnection().message});
+/**
+ * Retrieve a user by username from the specified database collection.
+ * @param {String} username - The username of the user to retrieve.
+ * @param {String} database - The name of the database collection.
+ * @returns {Object} - The status of the retrieval process and the user data or an error message.
+ */
+async function getUserByName(username, database) {
+    const dbStatus = checkDbConnection();
+    if (dbStatus.status === "failed") {
+        return {status: "server-error", message: dbStatus.message};
     }
-    try{
-        const user = await db.collection("codemelonUsers").findOne({username: username});
-        if (user == null){
-            return ({status: "not-found", message: "User not found"})
-        }else{
-            return ({status: "found", uid: user.uid});
+    try {
+        const user = await db.collection(database).findOne({ username });
+        if (!user) {
+            return {status: "not-found", message: "User not found"};
         }
-    }catch (err) {
-        return ({status: "server-error", message: err.message});
+        return {status: "found", user};
+    } catch (err) {
+        return {status: "server-error", message: err.message};
     }
 }
 
+/**
+ * Update user information in the database.
+ * @param {Object} req - The request object containing updated user information.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
+ * @returns {void}
+ */
 async function updateUser(req, res, next) {
-    const dbStatus = await checkDbConnection();
+    const dbStatus = checkDbConnection();
     if (dbStatus.status === "failed") {
       return res.status(500).json({ status: "server-error", message: dbStatus.message });
     }
@@ -119,8 +160,8 @@ async function updateUser(req, res, next) {
   
       // Check if new username is available
       if (updatedInfo.username && updatedInfo.username !== existingUser.username) {
-        const usernameTaken = await getUserByName(updatedInfo.username);
-        if (usernameTaken.status == "found") {
+        const usernameTaken = await getUserByName(updatedInfo.username, "codemelonUsers");
+        if (usernameTaken.status === "found") {
           return res.status(400).json({ status: "client-error", message: "Username is already taken" });
         }
       }
@@ -134,6 +175,6 @@ async function updateUser(req, res, next) {
     }
     
     next();
-  }
+}
 
-module.exports = { createUser, getUserByEmail, updateUser, getUserByUid, getUserByName};
+module.exports = { createUser, getUserByEmail, updateUser, getUserByUid, getUserByName };
