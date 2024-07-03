@@ -10,7 +10,7 @@ async function signUp(userData, password) {
             return { status: "success", message: "User created successfully", uid: info.uid };
         } else {
             logError(info.status, info.message);
-            return { status: "failed", message: "User creation failed" };
+            return { status: "failed", message: info.message };
         }
     } catch (err) {
         logError('server-error', err.message);
