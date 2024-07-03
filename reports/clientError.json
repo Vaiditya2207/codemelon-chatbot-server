@@ -1,0 +1,42 @@
+[
+  {
+    "key": 1,
+    "module": "errorLogger.js",
+    "status": "not-solved",
+    "message": "User with this email already exists",
+    "time": "2024-07-03T10:52:33.085Z",
+    "lineNumber": 6
+  },
+  {
+    "key": 2,
+    "module": "errorLogger.js",
+    "status": "not-solved",
+    "message": "User with this email already exists",
+    "time": "2024-07-03T10:52:56.222Z",
+    "lineNumber": 6
+  },
+  {
+    "key": 3,
+    "module": "errorLogger.js",
+    "status": "not-solved",
+    "message": "User with this email already exists",
+    "time": "2024-07-03T10:52:57.074Z",
+    "lineNumber": 6
+  },
+  {
+    "key": 4,
+    "module": "errorLogger.js",
+    "status": "not-solved",
+    "message": "User with this email already exists",
+    "time": "2024-07-03T10:52:57.711Z",
+    "lineNumber": 6
+  },
+  {
+    "key": 5,
+    "module": "errorLogger.js",
+    "status": "not-solved",
+    "message": "User with this email already exists",
+    "time": "2024-07-03T10:52:58.304Z",
+    "lineNumber": 6
+  }
+]
