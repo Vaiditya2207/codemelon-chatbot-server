@@ -1,0 +1,20 @@
+version: '3'
+services:
+  codemelon-app:
+    build: .
+    ports:
+      - "2612:2612"
+    environment:
+      - MONGO_URI=mongodb://host.docker.internal:27017/codemelon
+    # Remove `network_mode: host` if you want to use port mapping
+    # network_mode: host
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:

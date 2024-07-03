@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 
-const mongoURI = "mongodb://localhost:27017/codemelon";
+const mongoURI = "mongodb://host.docker.internal:27017/codemelon";
+
 
 // Connect to MongoDB
 mongoose.connect(mongoURI)
