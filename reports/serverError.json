@@ -5,3 +5,41 @@
 {"status":"not-solved","message":"r is not defined","time":"2024-07-02T12:34:36.109Z"}
 {"status":"not-solved","message":"r is not defined","time":"2024-07-02T12:36:26.215Z"}
 {"status":"not-solved","message":"r is not defined","time":"2024-07-02T12:37:05.882Z"}
+{"status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T08:53:40.901Z"}
+{"status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T08:55:53.743Z"}
+{"status":"not-solved","message":"info is not defined","time":"2024-07-03T08:57:42.999Z"}
+{"status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T08:58:25.693Z"}
+{"status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T08:58:25.693Z"}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:05:01.042Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:05:01.043Z","lineNumber":7}
+{"module":"7","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:05:41.968Z","lineNumber":7}
+{"module":"7","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:05:41.969Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:12.241Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:12.241Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:26.907Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:26.908Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:28.112Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:28.112Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:30.723Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:30.723Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:31.274Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:31.274Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:31.832Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:31.832Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:32.360Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:32.360Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:32.862Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:32.863Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:33.960Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:33.961Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:34.428Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:34.428Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:36.309Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:36.310Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:09:37.493Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:09:37.493Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set properties of undefined (setting 'uid')","time":"2024-07-03T09:10:05.962Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:10:05.963Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Hashing password failed: data and salt arguments required","time":"2024-07-03T09:38:50.083Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Hashing password failed","time":"2024-07-03T09:38:50.084Z","lineNumber":7}
+{"module":"errorLogger.js","status":"not-solved","message":"Cannot set headers after they are sent to the client","time":"2024-07-03T09:38:50.084Z","lineNumber":7}

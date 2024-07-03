@@ -6,7 +6,6 @@ async function signUp(userData, password) {
     try {
         const hashedPassword = await hashPassword(password);
         const info = await createUser(userData, hashedPassword);
-
         if (info.status === "success") {
             return { status: "success", message: "User created successfully", uid: info.uid };
         } else {

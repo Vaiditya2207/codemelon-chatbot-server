@@ -16,6 +16,10 @@ const port = 2612;
 
 app.post('/signup', async (req, res) => {
     try {
+        if(!req.body.info){
+            logError('client-error', "missing arguments");
+            res.status(400).json({ status: "failed", message: "missing info" });
+        }
         const userData = req.body.info;
         const password = req.body.password;
         const response = await signUp(userData, password);
@@ -32,6 +36,7 @@ app.post('/signin', async (req, res) => {
             const response = await checkCredentials(req.body.credentials);
             res.json(response);
         } else {
+            logError('client-error', "missing arguments");
             res.json({ status: "failed", message: "Data error" });
         }
     } catch (err) {
@@ -91,3 +96,5 @@ app.post('/shutdown', async (req, res) => {
         res.status(500).json({ status: "server-error", message: "Internal Server Error" });
     }
 });
+
+module.exports = {app, server}
