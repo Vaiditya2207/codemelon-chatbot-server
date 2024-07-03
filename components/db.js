@@ -4,10 +4,9 @@ const { v4: uuidv4 } = require("uuid");
 const mongoURI = "mongodb://localhost:27017/codemelon";
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI)
   .then(() => console.log("   * Connected to Codemelon database! * "))
   .catch(err => console.error("Connection error", err));
-
 // Handle connection errors
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
@@ -177,4 +176,4 @@ async function updateUser(req, res, next) {
     next();
 }
 
-module.exports = { createUser, getUserByEmail, updateUser, getUserByUid, getUserByName };
+module.exports = { createUser, getUserByEmail, updateUser, getUserByUid, getUserByName, db};
